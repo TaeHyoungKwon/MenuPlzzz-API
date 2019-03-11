@@ -9,9 +9,14 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "nodemon": "^1.18.10"
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.10",
+    "swagger": "^0.7.5",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "supertest": "^4.0.0"
   }
 }
