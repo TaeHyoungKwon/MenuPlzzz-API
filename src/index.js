@@ -11,3 +11,5 @@ app.listen(3000, () => console.log(`Start Server`));
 app.get("/", function(req, res, err) {
   res.send("Server Start!!!");
 });
+
+app.use("/api", require("./routes/api"));
