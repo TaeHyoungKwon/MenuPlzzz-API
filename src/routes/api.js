@@ -15,9 +15,11 @@ router.get("/home", function(req, res) {
     }
 
     for (let index = 0; index < rows.length; index++) {
+      console.log(rows[index].image);
       const store = {
         id: rows[index].id,
         name: rows[index].name,
+        image: rows[index].image
       };
       storeArr.push(store);
     }
@@ -55,7 +57,7 @@ router.get("/store/:storeId/menu", function(req, res) {
       let menu = {
         name: rows[index].menuName,
         price: rows[index].price,
-        image: rows[index].image,
+        image: rows[index].image
       };
       menuListObject.push(menu);
 
@@ -63,14 +65,14 @@ router.get("/store/:storeId/menu", function(req, res) {
         if (categoryId !== rows[index + 1].categoryId) {
           result.push({
             category: rows[index].categoryName,
-            menu: menuListObject,
+            menu: menuListObject
           });
           menuListObject = [];
         }
       } else if (index === rows.length - 1) {
         result.push({
           category: rows[index].categoryName,
-          menu: menuListObject,
+          menu: menuListObject
         });
       }
     }
