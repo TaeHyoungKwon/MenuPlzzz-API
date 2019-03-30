@@ -76,6 +76,10 @@ router.get("/store/:storeId/menu", function(req, res) {
         });
       }
     }
+    if (result.length === 0) {
+      return res.status(404).end();
+    }
+    console.log(result.length);
 
     res.send(result);
   });

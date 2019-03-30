@@ -4,19 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "node_modules/.bin/mocha ./api_test/api.spec.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "swagger": "^0.7.5",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.2",
     "should": "^13.2.3",
-    "supertest": "^4.0.0"
+    "supertest": "^4.0.2"
   }
 }
