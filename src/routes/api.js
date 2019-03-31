@@ -15,7 +15,6 @@ router.get("/home", function(req, res) {
     }
 
     for (let index = 0; index < rows.length; index++) {
-      console.log(rows[index].image);
       const store = {
         id: rows[index].id,
         name: rows[index].name,
