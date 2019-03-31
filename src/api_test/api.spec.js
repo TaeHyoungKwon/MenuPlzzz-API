@@ -1,9 +1,8 @@
 const request = require("supertest");
 const should = require("should");
-const api = require("../routes/api");
 const index = require("../index");
 
-describe("GET /store/:storeId/menu 는", () => {
+describe("GET /api/store/:storeId/menu 는", () => {
   describe("성공시", () => {
     it("메뉴 객체를 담은 배열로 응답한다 ", done => {
       request(index)
@@ -19,7 +18,6 @@ describe("GET /store/:storeId/menu 는", () => {
       request(index)
         .get("/api/store/7/menu")
         .expect(404)
-        //.expect(404)
         .end(done);
     });
   });
