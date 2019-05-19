@@ -33,6 +33,7 @@ router.get("/store/:storeId/menu", function(req, res) {
   var menuQuery =
     " select cs.name as 'storeName', " +
     "       cc.name as 'categoryName', " +
+    "         cm.id as 'menuId', " +
     "         cm.name as 'menuName', " +
     "         cm.price as 'price', " +
     "         cm.image as image, " +
@@ -54,6 +55,7 @@ router.get("/store/:storeId/menu", function(req, res) {
       const categoryId = rows[index].categoryId; // 1
 
       let menu = {
+        id: rows[index].menuId,
         name: rows[index].menuName,
         price: rows[index].price,
         image: rows[index].image
