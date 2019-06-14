@@ -29,19 +29,18 @@ router.get("/home", function(req, res) {
 
 router.get("/store/:storeId/menu", function(req, res) {
   var storeId = req.params.storeId;
-
-  var menuQuery =
-    " select cs.name as 'storeName', " +
-    "       cc.name as 'categoryName', " +
-    "         cm.id as 'menuId', " +
-    "         cm.name as 'menuName', " +
-    "         cm.price as 'price', " +
-    "         cm.image as image, " +
-    "         cc.id as 'categoryId' " +
-    " from crawl_menu as cm " +
-    " join crawl_category as cc on cm.category_id = cc.id " +
-    " join crawl_store as cs on cm.store_id = cs.id " +
-    " where cm.store_id = ? ;";
+  
+  var menuQuery = ` select cs.name as 'storeName',  
+    cc.name as 'categoryName',  
+      cm.name as 'menuName',  
+      cm.price as 'price',  
+      cm.image as 'image',  
+      cc.id as 'categoryId',  
+      cs.site_url as 'siteUrl'
+from crawl_menu as cm  
+join crawl_category as cc on cm.category_id = cc.id  
+join crawl_store as cs on cm.store_id = cs.id  
+where cm.store_id = ? ;`;
 
   conn.query(menuQuery, storeId, function(err, rows) {
     if (err) {
@@ -66,6 +65,7 @@ router.get("/store/:storeId/menu", function(req, res) {
         if (categoryId !== rows[index + 1].categoryId) {
           result.push({
             category: rows[index].categoryName,
+            siteUrl: rows[index].siteUrl,
             menu: menuListObject
           });
           menuListObject = [];
@@ -73,6 +73,7 @@ router.get("/store/:storeId/menu", function(req, res) {
       } else if (index === rows.length - 1) {
         result.push({
           category: rows[index].categoryName,
+          siteUrl: rows[index].siteUrl,
           menu: menuListObject
         });
       }
