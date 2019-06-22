@@ -29,9 +29,10 @@ router.get("/home", function(req, res) {
 
 router.get("/store/:storeId/menu", function(req, res) {
   var storeId = req.params.storeId;
-  
+
   var menuQuery = ` select cs.name as 'storeName',  
     cc.name as 'categoryName',  
+      cm.id as 'menuId',
       cm.name as 'menuName',  
       cm.price as 'price',  
       cm.image as 'image',  
